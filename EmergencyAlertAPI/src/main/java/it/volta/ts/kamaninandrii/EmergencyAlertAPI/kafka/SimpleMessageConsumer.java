@@ -1,5 +1,6 @@
 package it.volta.ts.kamaninandrii.EmergencyAlertAPI.kafka;
 
+import it.volta.ts.kamaninandrii.EmergencyAlertAPI.model.Alert;
 import it.volta.ts.kamaninandrii.EmergencyAlertAPI.service.MessageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,9 +21,9 @@ public class SimpleMessageConsumer {
         this.messageService = messageService;
     }
 
-    @KafkaListener(topics = "${spring-kafka-introduction.topic}", groupId = "simple-kafka-example")
-    public void listen(final String message) {
-        log.info("Received message: {}.", message);
-        messageService.onMessageReceived(message);
+    @KafkaListener(topics = "emergency-notifications", groupId = "notification-group")
+    public void listen(final Alert alert) {
+        log.info("Received alert: {}.", alert);
+        messageService.onMessageReceived(alert);
     }
 }

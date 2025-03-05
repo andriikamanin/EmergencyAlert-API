@@ -1,5 +1,6 @@
 package it.volta.ts.kamaninandrii.EmergencyAlertAPI.kafka;
 
+import it.volta.ts.kamaninandrii.EmergencyAlertAPI.model.Alert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,17 +16,17 @@ public class SimpleMessageProducer {
 
     private final String topicName;
 
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, Alert> kafkaTemplate;
 
     public SimpleMessageProducer(@Value("${spring-kafka-introduction.topic}") final String topicName,
-                                 final KafkaTemplate<String, String> kafkaTemplate) {
+                                 final KafkaTemplate<String, Alert> kafkaTemplate) {
         this.topicName = topicName;
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void sendMessage(final String message) {
+    public void sendMessage(Alert alert) {
         final String key = UUID.randomUUID().toString();
-        kafkaTemplate.send(topicName, key, message);
-        log.info("Submitted message {} to topic {].", message, topicName);
+        kafkaTemplate.send(topicName, key, alert);
+        log.info("Submitted alert {} to topic {}.", alert, topicName);
     }
 }

@@ -15,28 +15,48 @@ java {
 
 repositories {
 	mavenCentral()
+	maven { url 'https://repo.spring.io/release' } // Добавлен репозиторий для Spring Cloud
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
 	// Spring Boot dependencies
-	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.kafka:spring-kafka'
-	implementation 'org.springframework:spring-tx'
+	implementation 'org.springframework.boot:spring-boot-starter-cache'
+	implementation 'org.springframework.boot:spring-boot-starter-logging'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
-	// Annotation processor
-//	optional 'org.springframework.boot:spring-boot-configuration-processor'
+	// Database connection - MySQL
+	implementation 'mysql:mysql-connector-java:8.0.30' // Указана версия
+
+
+	// Redis cache
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+	// AWS SES
+	implementation 'software.amazon.awssdk:ses:2.17.146' // Замените на последнюю доступную версию
+
+	// Kafka dependencies
+	implementation 'org.springframework.kafka:spring-kafka'
+	implementation 'org.apache.kafka:kafka-clients:3.3.0' // или версия, совместимая с вашим Kafka
 
 	// Testing dependencies
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.kafka:spring-kafka-test'
 	testImplementation 'junit:junit:4.13.2'
 	testImplementation 'org.hamcrest:hamcrest-core:2.2'
+
+	// Jackson for JSON processing (if required)
+	implementation 'com.fasterxml.jackson.core:jackson-databind'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom 'org.springframework.cloud:spring-cloud-dependencies:2023.0.0'
+	}
 }
 
 tasks.named('test') {

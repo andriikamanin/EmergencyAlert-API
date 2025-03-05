@@ -29,15 +29,15 @@ public class MessageController {
         this.messageService = messageService;
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    /*@RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> submitMessage(@RequestBody String message) {
         log.info("Accepted message {}, attempting to submit it to Kafka.", message);
         producer.sendMessage(message);
         return ResponseEntity.accepted().build();
-    }
+    }*/
 
-    @RequestMapping(method = RequestMethod.GET)
+    /*@RequestMapping(method = RequestMethod.GET)
     public Collection<String> listReceivedMessages() {
         return messageService.getReceivedMessages();
-    }
+    }*/
 }

@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# Игнорировать application.properties (содержит чувствительные данные)
+src/main/resources/application.properties
