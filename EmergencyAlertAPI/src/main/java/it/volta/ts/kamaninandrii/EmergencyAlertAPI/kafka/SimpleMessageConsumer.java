@@ -1,6 +1,6 @@
 package it.volta.ts.kamaninandrii.EmergencyAlertAPI.kafka;
 
-import net.mguenther.springkafka.service.MessageService;
+import it.volta.ts.kamaninandrii.EmergencyAlertAPI.service.MessageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
