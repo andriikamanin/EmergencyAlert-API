@@ -8,10 +8,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * @author Markus Günther (markus.guenther@gmail.com)
- * @author Boris Fresow (bfresow@gmail.com)
- */
 @Service
 public class MessageService {
 

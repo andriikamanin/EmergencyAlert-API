@@ -13,10 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
 
-/**
- * @author Markus Günther (markus.guenther@gmail.com)
- * @author Boris Fresow (bfresow@gmail.com)
- */
 @RestController
 @RequestMapping("/messages")
 public class MessageController {
